@@ -1,0 +1,44 @@
+# Vim swap files
+*.swp
+*.swo
+*.swn
+.*.sw?
+.netrwhist
+.viminfo
+
+# React (Vite)
+node_modules/
+dist/
+.env
+*.log
+
+# MERN (MongoDB, Express, React, Node.js)
+node_modules/
+.env
+log/
+dist/
+tmp/
+coverage/
+.npm-debug.log*
+.idea/
+.vscode/
+
+# .NET MAUI-Blazor Hybrid
+bin/
+obj/
+AppData/
+*.user
+*.vs/
+*.suo
+*.dll
+*.pdb
+*.exe
+*.config
+.nuget/
+Dependencies/
+*.props
+*.targets
+
+# System-specific
+.DS_Store
+Thumbs.db
