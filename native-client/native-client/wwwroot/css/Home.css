@@ -1,0 +1,95 @@
+:root {
+	--header-tag: black;
+	--header-tag-accent: var(--accent-1);
+
+	--accent-1: #9966cc;
+	--accent-2: #333333;
+
+	--box-border: grey;
+
+	--btn-background-1: var(--accent-1);
+	--btn-text-1: whitesmoke;
+
+	--box-shadow: rgb(100, 100, 111, .2);
+}
+
+input[type='text'] {
+	border-radius: 3px;
+	border: 1px solid var(--box-border);
+	outline: none;
+
+	color: var(--accent-2);
+
+	padding: 4px;
+}
+
+input[type='text']:focus {
+	border: 1px solid var(--accent-1);
+
+	box-shadow: var(--box-shadow) 0px 0px 10px 3px;
+}
+
+button {
+	background-color: var(--btn-background-1);
+	color: var(--btn-text-1);
+
+	outline: none;
+
+	padding: 3px 10px;
+
+	border-radius: 3px;
+	border: 1px solid var(--box-border);
+}
+
+button:focus {
+	box-shadow: var(--box-shadow) 0px 0px 10px 3px;
+}
+
+button:hover {
+	box-shadow: var(--box-shadow) 0px 0px 10px 3px;
+}
+
+.main-content {
+	margin: 20px 20px;
+
+	display: flex;
+	flex-direction: row;
+}
+
+.login-container {
+	padding: 10px 10px;
+
+	display: flex;
+	flex-direction: column;
+	gap: 35px;
+}
+
+.header-tag {
+	font-size: 60px;
+	font-weight: 100;
+
+	color: var(--header-tag);
+}
+
+.header-accent {
+	color: var(--header-tag-accent);
+}
+
+
+.form-container {
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+}
+
+.form-group {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.btn-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
