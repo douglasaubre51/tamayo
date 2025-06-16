@@ -1,19 +1,23 @@
-import express, { Request, Response } from 'express'
+import express from 'express'
+import mongoose from 'mongoose'
 
 
+// init api
 const app = express()
 const port:number = 3000
 
+// middleware
 app.use(express.json())
 
-app.get(
-  '/',
-  (req: Request,res: Response) =>{
-    res.send('ts says hello!')
-  }
+// init mongo db
+mongoose.connect(
+    'mongodb+srv://allen:chancellor66@neliel.ptcuka3.mongodb.net/tamayodb?retryWrites=true&w=majority&appName=Neliel'
 )
+.then(()=> console.log("connected to neliel cluster's tamayodb!"))
+.catch((e)=> console.log(`error connecting to db:\n ${e.message}`))
 
+// start api
 app.listen(
   port,
-  () => console.log(`http://localhost:${port}/ microsoft says hello!`)
+  () => console.log(`http://localhost:${port}/ tamayo says hello!`)
 )
