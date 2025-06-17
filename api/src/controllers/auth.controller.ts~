@@ -16,7 +16,7 @@ export const SignIn = async (req,res) => {
 	}
 
 	// check if user is tutor
-	let dbUser :any = await Tutor.findOne({ email })
+	let dbUser? :any = await Tutor.findOne({ email })
 
 	if( dbUser == null ){
 		// check if user is student

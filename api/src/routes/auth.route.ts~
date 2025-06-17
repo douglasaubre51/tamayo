@@ -1,0 +1,11 @@
+import express from 'express'
+import { SignIn } from '../controllers/SignIn.controller.ts'
+
+
+export const router = express.Router()
+
+router.post(
+	'/sign-in',
+	SignIn
+)
+
