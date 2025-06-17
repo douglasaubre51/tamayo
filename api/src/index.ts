@@ -1,5 +1,6 @@
 import express from 'express'
 import mongoose from 'mongoose'
+import dotenv from 'dotenv'
 
 import { router } from './routes/auth.route.ts'
 
@@ -7,6 +8,9 @@ import { router } from './routes/auth.route.ts'
 // init api
 const app = express()
 const port:number = 3000
+
+// init env variables
+dotenv.config()
 
 // middleware
 app.use(express.json())

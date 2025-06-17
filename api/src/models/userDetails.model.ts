@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
 
 
-const userDetailsSchema = {
+const UserDetails = {
     firstName:{
 	type: String,
 	required: true
@@ -22,4 +22,4 @@ const userDetailsSchema = {
     profilePhoto: String
 }
 
-export default userDetails
+export default UserDetails

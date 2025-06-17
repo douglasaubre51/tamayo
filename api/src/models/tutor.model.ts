@@ -1,13 +1,13 @@
 import mongoose from 'mongoose'
 
-import UserDetails from './user.model.ts'
+import UserDetails from './userDetails.model.ts'
 
 
 const tutorSchema = mongoose.Schema(
     {
 	user: UserDetails,
 	role:{
-	    type: String,
+	    type: Number,
 	    required: true
 	},
 
