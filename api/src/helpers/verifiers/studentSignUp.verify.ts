@@ -3,34 +3,24 @@ import mongoose from 'mongoose'
 import bcrypt from 'bcrypt'
 
 import User from '../../models/userDetails.model.ts'
-import Tutor from '../../models/tutor.model.ts'
+import Student from '../../models/student.model.ts'
 
 
-export const TutorSignUp = async ( req :Request, res:Response ) =>{
+export const StudentSignUp = async ( req :Request, res:Response ) =>{
     const {
 	firstName,
 	lastName,
 	email,
 	password,
-	passkey,
 	role
     } = req.body
 
     // verify fields
-    if( firstName == '' || lastName == '' || email == '' || password == '' || passkey == '' ){
+    if( firstName == '' || lastName == '' || email == '' || password == '' ){
 	return res
 	.status(400)
 	.json({
 	    message: 'enter all fields!'
-	})
-    }
-
-    // check passkey
-    if( passkey != process.env.TUTOR_PASSKEY ){
-	return res
-	.status(400)
-	.json({
-	    message: 'wrong passkey!'
 	})
     }
 
@@ -44,12 +34,12 @@ export const TutorSignUp = async ( req :Request, res:Response ) =>{
 	    password: hashedPassword
 	}
 
-	let tutor = new Tutor({
+	let student = new Student({
 	    user: user,
 	    role
 	})
 
-	await tutor.save()
+	await student.save()
 
     }catch(e){
 	return res
@@ -63,6 +53,6 @@ export const TutorSignUp = async ( req :Request, res:Response ) =>{
     return res
     .status(201)
     .json({
-	message: 'new tutor account created!'
+	message: 'new student account created!'
     })
 }

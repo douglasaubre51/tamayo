@@ -1,9 +1,9 @@
 import { Request, Response } from 'express'
-import { TutorSignUp } from '../helpers/verifiers/tutorSignUp.verify.ts'
 
 // extras
 import { Roles } from '../enums/roles.enum.ts'
-
+import { TutorSignUp } from '../helpers/verifiers/tutorSignUp.verify.ts'
+import { StudentSignUp } from '../helpers/verifiers/studentSignUp.verify.ts'
 
 
 export const SignIn = async ( req :Request, res :Response ) => {
@@ -85,9 +85,19 @@ export const SignUp = async ( req :Request, res :Response ) =>{
 	})
     }
 
-    let userRole :String = req.body.role
+    let userRole :string = req.body.role
 
     // tutor sign up
     if( userRole == Roles.TUTOR )
 	return TutorSignUp( req, res )
+
+    // student sign up
+    if( userRole == Roles.STUDENT )
+	return StudentSignUp( req, res )
+
+    return res
+    .status(400)
+    .json({
+	message: 'error signing up!'
+    })
 }
