@@ -2,75 +2,37 @@ import { Request, Response } from 'express'
 
 // extras
 import { Roles } from '../enums/roles.enum.ts'
+import { TutorSignIn } from '../helpers/verifiers/tutorSignIn.verify.ts'
 import { TutorSignUp } from '../helpers/verifiers/tutorSignUp.verify.ts'
 import { StudentSignUp } from '../helpers/verifiers/studentSignUp.verify.ts'
 
 
 export const SignIn = async ( req :Request, res :Response ) => {
-    const { email , password } :String = req.body
+    let { 
+	email, 
+	password,
+	role
+    } :String = req.body
 
-    console.log(`email: ${email}, password: ${password}`)
-
-    if( email=='' | password=='' ){
+    // validate fields
+    if( email=='' || password=='' ){
 	return res
 	.status(400)
 	.json({
-	    message: 'empty email or password fields!'
+	    message: 'enter all fields!'
 	})
     }
 
-    try{
-	// check if user is tutor
-	let dbUser :any = await Tutor.findOne({ email })
+    if( role == Roles.TUTOR )
+	return await TutorSignIn( req, res )
 
-	if( dbUser == null ){
-	    // check if user is student
-	    dbUser = await Student.findOne({ email })
-
-	    if( dbUser == null ){
-		return res
-		.status(400)
-		.json({
-		    message: 'invalid email!'
-		})
-	    }
-
-	    // authenticate student
-	    if( password == dbUser.password ){
-		// student login
-		console.log('tutor logged in!')
-
-		return res
-		.status(200)
-		.json({
-		    message: 'tutor logged in!'
-		})
-	    }
-
-	    return res
-	    .status(400)
-	    .json({
-		message: 'wrong password!'
-	    })
-	}
-    }catch(e){
-	return res
-	.status(500)
-	.json({
-	    message: 'db error!'
-	})
-    }
-
-    // authenticate student
-    if( password == dbUser.password ){
-	// student login
-	console.log('student logged in!')
-    }
+    if( role == Roles.STUDENT )
+	return await StudentSignIn(req, res )
 
     return res
     .status(400)
     .json({
-	message: 'wrong password!'
+	message: 'error signing in!'
     })
 }
 
