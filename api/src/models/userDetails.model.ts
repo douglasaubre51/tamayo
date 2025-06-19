@@ -23,3 +23,13 @@ const UserDetails = {
 }
 
 export default UserDetails
+
+type User = {
+    firstName :string,
+    lastName :string,
+    email :string,
+    password :string,
+    profilePhoto :string
+}
+
+export default User
